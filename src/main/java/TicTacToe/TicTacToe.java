@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 
 import ticTacToe.Move.Outcome;
 import ticTacToe.Move.Position;
-import com.sun.tools.javac.util.Pair;
+import org.apache.commons.lang3.tuple.Pair;
 
 /**
  * Find the best move for a player and a TicTacToe Board
@@ -102,10 +102,13 @@ class TicTacToe {
 
         Board board = new Board(3,
                 "___"+
-                "_O_" +
-                "__X"
+                "___" +
+                "___"
         );
-        Move answer = TicTacToe.findBestMove(board, Player.O);
-        LOGGER.info("Best move is:" + answer);
+        Move answer = TicTacToe.findBestMove(board, Player.X);
+        Board newBoard = new Board(board, answer.getPosition(), Player.X);
+        LOGGER.info("Board:" + board.toString()
+                + "Best move is:" + answer + "\n"
+                + "New Board:" + newBoard);
     }
 }

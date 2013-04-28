@@ -1,0 +1,9 @@
+Implements a best move finder for a TicTacToc board
+
+To test:
+
+% mvn clean install exec:java -Dexec.mainClass="ticTacToe.TicTacToe"
+
+To change the initial board, edit TicTacToe.java::main()
+
+

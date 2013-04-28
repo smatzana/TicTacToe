@@ -11,7 +11,7 @@
 
 package ticTacToe;
 
-import com.sun.tools.javac.util.Pair;
+import org.apache.commons.lang3.tuple.Pair;
 
 /**
  * A TicTacToe Move
@@ -108,13 +108,13 @@ public class Move implements Comparable<Move> {
         private Pair<Integer,Integer> coordinates;
 
         public Position(Integer row, Integer column) {
-            this.coordinates = new Pair<Integer, Integer>(row, column);
+            this.coordinates = Pair.of(row, column);
         }
 
         public Position(Position coordinates) {
             this.coordinates = Pair.of(
-                    coordinates.coordinates.fst,
-                    coordinates.coordinates.snd);
+                    coordinates.coordinates.getLeft(),
+                    coordinates.coordinates.getRight());
         }
 
         protected Pair<Integer, Integer> getCoordinates() {
@@ -127,7 +127,7 @@ public class Move implements Comparable<Move> {
 
         public String toString() {
             return "[" + this.coordinates
-                    .fst.toString() + " " + this.coordinates.snd.toString() + "]";
+                    .getLeft().toString() + " " + this.coordinates.getRight().toString() + "]";
         }
     }
 }

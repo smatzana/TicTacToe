@@ -74,7 +74,7 @@ public class Board {
             }
         }
         // Move player to position
-        this.board[position.getCoordinates().fst][position.getCoordinates().snd] = p;
+        this.board[position.getCoordinates().getLeft()][position.getCoordinates().getRight()] = p;
         this.lastPosition = position;
     }
 
@@ -230,5 +230,16 @@ public class Board {
 
     public Position getLastPosition() {
         return this.lastPosition;
+    }
+
+    public String toString() {
+        StringBuffer retString = new StringBuffer("\n");
+        for( Player[] arr : this.board) {
+            for(Player p : arr) {
+                retString.append(p.toString());
+            }
+            retString.append("\n");
+        }
+        return retString.toString();
     }
 }

@@ -29,9 +29,9 @@ public class TicTacToeTest {
         );
         Move answer = TicTacToe.findBestMove(board, Player.X);
         // Should pick a corner (0,0)
-        assertEquals(answer.getPosition().getCoordinates().fst,
+        assertEquals(answer.getPosition().getCoordinates().getLeft(),
                 Integer.valueOf(0));
-        assertEquals(answer.getPosition().getCoordinates().snd,
+        assertEquals(answer.getPosition().getCoordinates().getRight(),
                 Integer.valueOf(0));
     }
 
@@ -44,9 +44,9 @@ public class TicTacToeTest {
         );
         Move answer = TicTacToe.findBestMove(board, Player.O);
         // Should pick corner (2,2)
-        assertEquals(answer.getPosition().getCoordinates().fst,
+        assertEquals(answer.getPosition().getCoordinates().getLeft(),
                 Integer.valueOf(2));
-        assertEquals(answer.getPosition().getCoordinates().snd,
+        assertEquals(answer.getPosition().getCoordinates().getRight(),
                 Integer.valueOf(2));
     }
 
@@ -59,9 +59,9 @@ public class TicTacToeTest {
         );
         Move answer = TicTacToe.findBestMove(board, Player.X);
         // Should pick  (2,1)
-        assertEquals(answer.getPosition().getCoordinates().fst,
+        assertEquals(answer.getPosition().getCoordinates().getLeft(),
                 Integer.valueOf(2));
-        assertEquals(answer.getPosition().getCoordinates().snd,
+        assertEquals(answer.getPosition().getCoordinates().getRight(),
                 Integer.valueOf(1));
     }
 
@@ -74,9 +74,9 @@ public class TicTacToeTest {
         );
         Move answer = TicTacToe.findBestMove(board, Player.X);
         // Should pick corner (0,0)
-        assertEquals(answer.getPosition().getCoordinates().fst,
+        assertEquals(answer.getPosition().getCoordinates().getLeft(),
                 Integer.valueOf(0));
-        assertEquals(answer.getPosition().getCoordinates().snd,
+        assertEquals(answer.getPosition().getCoordinates().getRight(),
                 Integer.valueOf(0));
     }
 
@@ -89,9 +89,9 @@ public class TicTacToeTest {
         );
         Move answer = TicTacToe.findBestMove(board, Player.O);
         // Should pick center (1,1)
-        assertEquals(answer.getPosition().getCoordinates().fst,
+        assertEquals(answer.getPosition().getCoordinates().getLeft(),
                 Integer.valueOf(1));
-        assertEquals(answer.getPosition().getCoordinates().snd,
+        assertEquals(answer.getPosition().getCoordinates().getRight(),
                 Integer.valueOf(1));
     }
 }
