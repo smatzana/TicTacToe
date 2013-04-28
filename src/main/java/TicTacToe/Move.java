@@ -9,7 +9,7 @@
  * All rights reserved.
  */
 
-package TicTacToe;
+package ticTacToe;
 
 import com.sun.tools.javac.util.Pair;
 
@@ -17,8 +17,8 @@ import com.sun.tools.javac.util.Pair;
  * A TicTacToe Move
  *
  * Encapsulates an Outcome (win, tie, lose) of a possible board move
- * along with its coordinates on the board, and the # of plays from
- * the beginning of the game
+ * along with its coordinates on the board
+ *
  * @author sotiris
  */
 public class Move implements Comparable<Move> {
@@ -39,7 +39,6 @@ public class Move implements Comparable<Move> {
 
     private Outcome outcome;
     private Position position;
-    private Integer moves;
 
     /**
      * Create a move out of a board position, an outcome and a
@@ -47,12 +46,10 @@ public class Move implements Comparable<Move> {
      *
      * @param position
      * @param outcome
-     * @param moves
      */
-    public Move(Position position, Outcome outcome, int moves) {
-        this.setOutcome(outcome);
-        this.setPosition(position);
-        this.setMoves(moves);
+    public Move(Position position, Outcome outcome) {
+        this.outcome = outcome;
+        this.position = position;
     }
 
     /**
@@ -62,7 +59,7 @@ public class Move implements Comparable<Move> {
      */
     public Move reverse() {
         Move retVal = new Move(new Position(this.getPosition()),
-                this.getOutcome().reverse(), this.getMoves());
+                this.getOutcome().reverse());
         return retVal;
     }
 
@@ -99,17 +96,8 @@ public class Move implements Comparable<Move> {
         this.position = position;
     }
 
-    private Integer getMoves() {
-        return this.moves;
-    }
-
-    private void setMoves(int moves) {
-        this.moves = moves;
-    }
-
     public String toString() {
-        return  this.getPosition().toString() + ", result:" + this.getOutcome()
-                + " in " + this.getMoves() + " moves";
+        return  this.getPosition().toString() + ", result:" + this.getOutcome();
     }
 
     /**
@@ -120,14 +108,13 @@ public class Move implements Comparable<Move> {
         private Pair<Integer,Integer> coordinates;
 
         public Position(Integer row, Integer column) {
-            this.setCoordinates(new Pair<Integer, Integer>(row, column));
+            this.coordinates = new Pair<Integer, Integer>(row, column);
         }
 
         public Position(Position coordinates) {
-            this.setCoordinates(
-                    Pair.of(
-                            coordinates.coordinates.fst,
-                            coordinates.coordinates.snd));
+            this.coordinates = Pair.of(
+                    coordinates.coordinates.fst,
+                    coordinates.coordinates.snd);
         }
 
         protected Pair<Integer, Integer> getCoordinates() {

@@ -9,7 +9,7 @@
  * All rights reserved.
  */
 
-package TicTacToe;
+package ticTacToe;
 
 import org.junit.Test;
 

@@ -1,12 +1,13 @@
-package TicTacToe;
+package ticTacToe;
 
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
-import TicTacToe.Move.Outcome;
-import TicTacToe.Move.Position;
+import ticTacToe.Move.Outcome;
+import ticTacToe.Move.Position;
 import com.sun.tools.javac.util.Pair;
 
 /**
@@ -14,7 +15,7 @@ import com.sun.tools.javac.util.Pair;
  *
  * @author sotiris
  */
-public class TicTacToe {
+class TicTacToe {
 
     /*
         Cache: a board solution is the same for its 3 other rotations:
@@ -47,11 +48,11 @@ public class TicTacToe {
          */
         if (board.hasSolution(player)) {
             return new Move(board.getLastPosition(),
-                    Outcome.WIN, board.getMoves());
+                    Outcome.WIN);
         }
         if (board.hasSolution(player.getOpponent())) {
             return new Move(board.getLastPosition(),
-                    Outcome.LOSE, board.getMoves());
+                    Outcome.LOSE);
         }
 
         List<Move> resList = new LinkedList<Move>();
@@ -68,7 +69,7 @@ public class TicTacToe {
             Move nextMove = findBestMove(newBoard, player.getOpponent());
             if (nextMove == null) {
                 // TIE
-                nextMove = new Move(emptySlot, Outcome.TIE, newBoard.getMoves());
+                nextMove = new Move(emptySlot, Outcome.TIE);
             }
             /* Player's best next move is the opposite of the opponent's
                so if the opponent reports a WIN, that's a LOSE for this
@@ -96,12 +97,15 @@ public class TicTacToe {
     }
 
     public static void main(String... args) {
+
+        Logger LOGGER = Logger.getLogger(TicTacToe.class.getName());
+
         Board board = new Board(3,
-                "X__"+
+                "___"+
                 "_O_" +
-                "___"
+                "__X"
         );
-        Move answer = TicTacToe.findBestMove(board, Player.X);
-        System.out.println("Best move is:" + answer.toString());
+        Move answer = TicTacToe.findBestMove(board, Player.O);
+        LOGGER.info("Best move is:" + answer);
     }
 }

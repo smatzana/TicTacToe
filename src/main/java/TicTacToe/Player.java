@@ -1,4 +1,4 @@
-package TicTacToe;
+package ticTacToe;
 
 /**
  * A TicTacToe board player: one of X, O or empty (_)

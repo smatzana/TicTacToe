@@ -1,9 +1,9 @@
-package TicTacToe;
+package ticTacToe;
 
 import java.util.LinkedList;
 import java.util.List;
 
-import TicTacToe.Move.Position;
+import ticTacToe.Move.Position;
 
 /**
  * Encapsulation of a TicTac Board
@@ -14,7 +14,6 @@ public class Board {
 
     private final int dimension;
     private Player[][] board;
-    private int moves;
     private Position lastPosition;
 
     /**
@@ -24,7 +23,6 @@ public class Board {
      */
     public Board(final int dimension) {
         this.dimension = dimension;
-        this.setMoves(0);
         this.lastPosition = null;
         this.board = new Player[dimension][dimension];
         for (int r = 0; r < this.dimension; r++) {
@@ -67,7 +65,6 @@ public class Board {
      */
     public Board(
             final Board oldBoard, Position position, Player p) {
-        this.setMoves(oldBoard.getMoves() + 1);
         this.dimension = oldBoard.dimension;
         this.board = new Player[this.dimension][this.dimension];
         // Copy board
@@ -78,7 +75,7 @@ public class Board {
         }
         // Move player to position
         this.board[position.getCoordinates().fst][position.getCoordinates().snd] = p;
-        this.setLastPosition(position);
+        this.lastPosition = position;
     }
 
     /**
@@ -119,7 +116,7 @@ public class Board {
             for (int c = 0; c < this.dimension; c++) {
                 hasSolution = true;
                 Player check = horizontal? this.board[r][c]: this.board[c][r];
-                if (check != p ) {
+                if (!check.equals(p)) {
                     hasSolution = false;
                     break;
                 }
@@ -231,22 +228,7 @@ public class Board {
         return rotateM;
     }
 
-    /*
-        Getter/setter methods for moves and last Position
-     */
-    public int getMoves() {
-        return this.moves;
-    }
-
-    public void setMoves(int moves) {
-        this.moves = moves;
-    }
-
     public Position getLastPosition() {
         return this.lastPosition;
-    }
-
-    public void setLastPosition(Position lastPosition) {
-        this.lastPosition = lastPosition;
     }
 }
